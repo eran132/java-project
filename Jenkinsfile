@@ -5,7 +5,7 @@ pipeline {
     stages {
         stage('Unit Tests') {
           agent {
-              label 'apache'
+            label 'apache'
           }  
           steps {
             sh 'ant -f test.xml -v'
@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('build') {
           agent {
-              label 'apache'
+            label 'apache'
           }
           steps {
             sh 'ant -f build.xml -v'
@@ -22,15 +22,15 @@ pipeline {
         }
         stage ('deploy') {
           agent {
-              label 'apache'
+            label 'apache'
           }
           steps {
             sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/"
-            }    
+          }    
         }
         stage ("Running on CentOS") {
           agent {
-              label 'CentOS'
+            label 'CentOS'
           }
           
           steps {
@@ -44,5 +44,4 @@ pipeline {
             archiveArtifacts artifacts: 'dist/*.jar', fingerprint: true
         }
     }
-}
 }
