@@ -1,7 +1,8 @@
 <?xml version="1.0"?>
 <project name="Rectangle-Build" default="main" basedir=".">
   <property environment="env"/>
-
+  <exec executable="hostname" outputproperty="computer.hostname"/>
+  <echo level="info">agent hostname: ${computer.hostname}</echo>
   <!-- Sets variables which can later be used. -->
   <!-- The value of a property is accessed via ${} -->
   <property name="src.dir" location="src" />
