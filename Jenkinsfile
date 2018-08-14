@@ -43,7 +43,7 @@ pipeline {
           }
           
           steps {
-            sh "wget http://eran1321.mylabserver.com/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
+            sh "wget http://eran1321.mylabserver.com/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar"
             sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
           }
         }
@@ -52,7 +52,7 @@ pipeline {
               docker 'openjdk:8u121-jre'
           }
           steps {
-              sh "wget http://eran1321.mylabserver.com/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar"
+              sh "wget http://eran1321.mylabserver.com/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar"
               sh "java -jar rectangle_${env.BUILD_NUMBER}.jar 3 4"
           }
         }
@@ -64,7 +64,7 @@ pipeline {
             branch 'master'
           }
           steps {
-            sh "cp /var/www/html/rectangles/all/${env.BRANCH_NAME}/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
+            sh "cp /var/www/html/rectangles/all//rectangle_${env.MAJOR_VERSION}.${env.BUILD_NUMBER}.jar /var/www/html/rectangles/green/rectangle_${env.BUILD_NUMBER}.jar"
           }
         }
         stage('Promote Development Branch to Master') {
