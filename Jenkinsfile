@@ -1,6 +1,9 @@
 pipeline {
     agent none
     
+    environment {
+      MAJOR_VERSION = 1
+    }
     
     stages {
         stage('Unit Tests') {
@@ -30,7 +33,7 @@ pipeline {
             label 'apache'
           }
           steps {
-            sh "if ![ -d '/var/www/html/rectangles/all/${env.BRANCH_NAME}' ]; then mkdir /var/www/html/rectangles/all/${env.BRANCH_NAME}; fi"
+            sh "mkdir /var/www/html/rectangles/all/${env.BRANCH_NAME}"
             sh "cp dist/rectangle_${env.BUILD_NUMBER}.jar /var/www/html/rectangles/all/${env.BRANCH_NAME}/"
           }    
         }
@@ -69,7 +72,7 @@ pipeline {
             label 'apache'
           }
           when {
-            branch 'master'
+            branch 'development'
           }
           steps {
             echo "Stashing Any Local Changes"
