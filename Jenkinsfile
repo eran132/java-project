@@ -100,8 +100,7 @@ pipeline {
               )
             }
           }
-        }      
-      post {
+        post {
         failure {
           emailext(
             subject: "${env.JOB_NAME} [${env.BUILD_NUMBER}] Failed!",
@@ -110,6 +109,8 @@ pipeline {
             to: "eran132@gmail.com"
           )
         }
-      }  
+      }    
+        }      
+      
     }
 }
