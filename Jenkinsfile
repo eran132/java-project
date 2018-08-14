@@ -99,7 +99,8 @@ pipeline {
                 to: "eran132@gmail.com"
               )
             }
-          }  
+          }
+        }      
       post {
         failure {
           emailext(
