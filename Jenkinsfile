@@ -100,6 +100,8 @@ pipeline {
               )
             }
           }
+        
+        }
         post {
         failure {
           emailext(
@@ -109,8 +111,7 @@ pipeline {
             to: "eran132@gmail.com"
           )
         }
-      }    
-        }      
+      }          
       
     }
 }
